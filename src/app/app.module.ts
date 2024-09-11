@@ -13,7 +13,6 @@ const routes: Routes = [
     AppComponent,
     MainComponent,
     LkComponent,
-    LkComponent,
   ],
   imports: [
     BrowserModule,
