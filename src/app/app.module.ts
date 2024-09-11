@@ -6,14 +6,6 @@ import { LkComponent } from "./pages/lk/lk.component";
 import { MainComponent } from "./pages/main/main.component";
 
 const routes: Routes = [
-  {
-    path: '',
-    component: MainComponent,
-  },
-  {
-    path: 'lk',
-    component: LkComponent,
-  },
 ];
 
 @NgModule({
