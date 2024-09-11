@@ -1,0 +1,8 @@
+@for (item of breadcrumbs; let last = $last; track $index) {
+  @if (!last) {
+    <a [routerLink]="item.path"> {{ item.label }} </a>
+    <span>></span>
+  } @else {
+    {{ item.label }}
+  }
+}
