@@ -13,6 +13,7 @@ const routes: Routes = [
   },
   {
     path: 'lk',
+    canLoad: [() => false],
     loadChildren: () => import('./pages/lk/lk.module').then(m => m.LkModule)
   },
   {
