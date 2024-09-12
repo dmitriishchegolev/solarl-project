@@ -28,12 +28,16 @@ export class BreadcrumbsComponent {
   private setBreadCrumbs(route: ActivatedRoute, path: string = '') {
     if (route.routeConfig && route.routeConfig.title) {
       path = `${path}/${route.routeConfig.path}`;
+      let label = route.routeConfig.title;
       if ((route.snapshot.params as any).id) {
         path = `${path}/${(route.snapshot.params as any).id}`;
       }
+      if (route.snapshot.data['breadCrumbsLabel']) {
+        label = route.snapshot.data['breadCrumbsLabel'];
+      }
 
       this.breadcrumbs.push({
-        label: route.routeConfig.title,
+        label,
         path
       })
     }

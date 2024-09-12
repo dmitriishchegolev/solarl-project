@@ -21,12 +21,8 @@ export const routes: Routes = [
         path: 'sign-in',
         title: 'Вход',
         // canActivate: [authGuard],
-        canMatch: [() => false],
+        // canMatch: [() => false],
         loadComponent: () => import('./pages/sign-in/sign-in.component').then(c => c.SignInComponent)
-      },
-      {
-        path: '**',
-        loadComponent: () => import('./pages/lk/lk.component').then(c => c.LkComponent)
       },
       {
         path: 'sign-up',
@@ -37,32 +33,12 @@ export const routes: Routes = [
       {
         path: 'ads',
         title: 'Список',
-        children: [
-          {
-            path: '',
-            canActivateChild: [authGuard],
-            loadComponent: () => import('./pages/ads/ads-list/ads-list.component').then(c => c.AdsListComponent),
-            children: [
-              {
-                path: 'new',
-                loadComponent: () => import('./pages/ads/ads-list/ads-list-new/ads-list-new.component').then(c => c.AdsListNewComponent)
-              },
-              {
-                path: 'popular',
-                loadComponent: () => import('./pages/ads/ads-list/ads-list-popular/ads-list-popular.component').then(c => c.AdsListPopularComponent)
-              }
-            ]
-          },
-          {
-            path: ':id',
-            title: 'Карточка',
-            data: {
-              description: 'Какаято карточка'
-            },
-            loadComponent: () => import('./pages/ads/ads-card/ads-card.component').then(c => c.AdsCardComponent)
-          }
-        ]
-      }
+        loadChildren: () => import('./pages/ads/ads.routes').then(r => r.adsRoutes)
+      },
+      {
+        path: '**',
+        loadComponent: () => import('./pages/lk/lk.component').then(c => c.LkComponent)
+      },
     ]
   },
 ];

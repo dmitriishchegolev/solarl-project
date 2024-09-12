@@ -11,4 +11,8 @@ export class UserService {
     return false;
   }
 
+  public isAdmin(): boolean {
+    return false;
+  }
+
 }
