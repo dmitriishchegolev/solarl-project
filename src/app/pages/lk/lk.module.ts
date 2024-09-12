@@ -1,5 +1,4 @@
 import { NgModule } from "@angular/core";
-import { BrowserModule } from "@angular/platform-browser";
 import { RouterModule, Routes } from "@angular/router";
 import { LkComponent } from "./lk.component";
 
@@ -15,8 +14,7 @@ const routes: Routes = [
     LkComponent
   ],
   imports: [
-    BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forChild(routes)
   ],
   providers: []
 })
