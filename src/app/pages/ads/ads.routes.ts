@@ -1,6 +1,4 @@
 import { Routes } from '@angular/router';
-import { adminGuard } from '../../guards/admin.guard';
-import { authGuard } from '../../guards/auth.guard';
 import { adsCardResolver } from '../../resolvers/ads-card.resolver';
 
 export const adsRoutes: Routes = [
@@ -20,6 +18,19 @@ export const adsRoutes: Routes = [
     ]
   },
   {
+    path: 'create',
+    title: 'Карточка',
+    data: {
+      description: 'Какаято карточка'
+    },
+    resolve: {
+      save: () => {
+        return () => 'Создание'
+      }
+    },
+    loadComponent: () => import('./ads-edit-card/ads-edit-card.component').then(c => c.AdsEditCardComponent)
+  },
+  {
     path: ':id',
     title: 'Карточка',
     data: {
@@ -36,7 +47,11 @@ export const adsRoutes: Routes = [
     data: {
       description: 'Какаято карточка'
     },
-    canActivate: [authGuard, adminGuard],
-    loadComponent: () => import('./ads-card/ads-card.component').then(c => c.AdsCardComponent)
-  }
+    resolve: {
+      save: () => {
+        return () => 'Редактирование'
+      }
+    },
+    loadComponent: () => import('./ads-edit-card/ads-edit-card.component').then(c => c.AdsEditCardComponent)
+  },
 ]
